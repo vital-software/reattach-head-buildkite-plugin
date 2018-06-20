@@ -1,0 +1,6 @@
+{
+  "name": "reattach-head",
+  "description": "Perform a git checkout with the local branch being built to reattach HEAD",
+  "author": "@vital-software",
+  "public": true
+}
