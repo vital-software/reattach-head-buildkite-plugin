@@ -2,7 +2,7 @@
 
 load '/usr/local/lib/bats/load.bash'
 
-@test "Environment runs a checkout" {
+@test "post-checkout does branch checkout" {
   stub git \
     "fetch origin foo : echo Fetched foo" \
     "checkout -B foo : echo Checked out foo" \
@@ -10,7 +10,7 @@ load '/usr/local/lib/bats/load.bash'
 
   export BUILDKITE_BRANCH="foo"
 
-  run "$PWD/hooks/environment"
+  run "$PWD/hooks/post-checkout"
 
   assert_output --partial "Fetched foo"
   assert_output --partial "Checked out foo"
