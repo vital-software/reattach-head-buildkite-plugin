@@ -13,8 +13,8 @@ DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 . "$DIR/../lib/shared.bash"
 
-plugin_prompt_and_run git fetch origin ${BUILDKITE_BRANCH}
-plugin_prompt_and_run git checkout -B ${BUILDKITE_BRANCH}
-plugin_prompt_and_run git branch -u origin/${BUILDKITE_BRANCH}
-plugin_prompt_and_run git config branch.${BUILDKITE_BRANCH}.remote origin
-plugin_prompt_and_run git config branch.${BUILDKITE_BRANCH}.merge refs/heads/${BUILDKITE_BRANCH}
+plugin_prompt_and_must_run git fetch origin ${BUILDKITE_BRANCH}
+plugin_prompt_and_must_run git checkout -B ${BUILDKITE_BRANCH}
+plugin_prompt_and_must_run git branch -u origin/${BUILDKITE_BRANCH}
+plugin_prompt_and_must_run git config branch.${BUILDKITE_BRANCH}.remote origin
+plugin_prompt_and_must_run git config branch.${BUILDKITE_BRANCH}.merge refs/heads/${BUILDKITE_BRANCH}

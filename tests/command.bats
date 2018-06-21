@@ -2,16 +2,19 @@
 
 load '/usr/local/lib/bats/load.bash'
 
-# Uncomment to enable stub debug output:
-export BUILDKITE_AGENT_REATTACH_HEAD_DEBUG=/dev/tty
-
 @test "Environment runs a checkout" {
   stub git \
-    "checkout -B ${BUILDKITE_BRANCH} : echo foo-123"
+    "fetch origin foo : echo Fetched foo" \
+    "checkout -B foo : echo Checked out foo" \
+    "branch -u origin/foo : echo Set upstream"
+
+  export BUILDKITE_BRANCH="foo"
 
   run "$PWD/hooks/environment"
 
-  assert_output --partial "foo-123"
+  assert_output --partial "Fetched foo"
+  assert_output --partial "Checked out foo"
+  assert_output --partial "Set upstream"
 
-  unstub git
+#  unstub git
 }
