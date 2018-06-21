@@ -10,7 +10,7 @@ steps:
   - label:   "Some command that analyses the current git branch"
     command: git rev-parse --abbrev-ref HEAD
     plugins:
-      vital-software/reattach-head#0.0.1
+      vital-software/reattach-head#0.0.1: {}
 ```
 
 ## Configuration
